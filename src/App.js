@@ -28,6 +28,7 @@ componentDidMount = () => {
       
         //call to get teams from server
         axios.get('http://localhost:8080/getTeams').then(result => {
+          console.log(result);
             this.setState({
                 teams: result.data.teams,
                 playerStats: this.state.playerStats,
@@ -36,6 +37,7 @@ componentDidMount = () => {
 
         //call to get todays games
         axios.get('http://localhost:8080/getGames').then(result => {
+          console.log('this is game ', result)
             this.setState({
               teams: this.state.teams,
               playerStats: this.state.playerStats,
@@ -59,18 +61,6 @@ componentDidUpdate = () => {
 componentWillUnmount = () => {
     this._isMounted = false;
 }
-
-// getData = () => {
-//     axios.get('https://api.mysportsfeeds.com/v2.1/pull/nba/2020-2021-regular/player_stats_totals.json',
-//     {headers: {Authorization: `Basic ${this.baseStr}`}})
-//                 .then(result => {
-//                     this.setState({
-//                         teams: this.state.teams,
-//                         playerStats: result.data,
-//                         todaysGame: this.state.todaysGame,
-//                     })
-//                 })
-// }
 
 splitTeams = (conference) => {
   let conferenceArray;
@@ -107,7 +97,8 @@ splitTeams = (conference) => {
       );
     } else {
       return (
-        <h1>Loading...</h1>
+        // <Loader />
+        <h1>Loading</h1>
       )
     }
   }

@@ -3,6 +3,7 @@ import axios from 'axios'
 import Leaders from './leaders'
 import './../App.css'
 
+
 class HomePage extends Component {
     _isMounted = false;
     api = 'https://api.mysportsfeeds.com/v2.1/pull/nba/2020-2021-regular/standings.json';
