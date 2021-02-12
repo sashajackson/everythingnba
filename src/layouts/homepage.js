@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import axios from 'axios'
 import Leaders from './leaders'
+import Loader from './loader'
 import './../App.css'
 
 
@@ -32,7 +33,7 @@ class HomePage extends Component {
     }
 
     componentDidUpdate = () => {
-        console.log('component updated');
+        // console.log('component updated');
     }
 
     componentWillUnmount = () => {
@@ -67,7 +68,6 @@ class HomePage extends Component {
                                                 <div className="card-body" style={{color: teams.team.teamColoursHex[1]}}>
                                                 <span style={{background: "black", color: "ghostwhite", marginRight:"1em"}} className="badge">{teams.conferenceRank.rank}</span>
                                                    <img src={teams.team.officialLogoImageSrc} style={{borderRadius:"30px", height:"50px", width:"auto", marginRight:"1em"}}/>
-                                                    {/* {teams.team.name}  */}
                                                 </div>
                                             </div>
                                         </div>
@@ -80,7 +80,6 @@ class HomePage extends Component {
                                                 <div className="card-body" style={{color: teams.team.teamColoursHex[1]}}>
                                                 <span style={{background: "black", color: "ghostwhite", marginRight:"1em"}} className="badge">{teams.conferenceRank.rank}</span>
                                                    <img src={teams.team.officialLogoImageSrc} style={{borderRadius:"30px", height:"50px", width:"auto", marginRight:"1em"}}/>
-                                                    {/* {teams.team.name}  */}
                                                 </div>
                                             </div>
                                         </div>
@@ -91,12 +90,6 @@ class HomePage extends Component {
                         </div>
                         <div style={{background:"#ff6666"}} className="col-6">
                         <div className="row">
-                            {/* {this.props.west.map((nbateam, i) => {
-                            if(nbateam.conferenceRank.rank < 8 && nbateam.conferenceRank.conferenceName === 'Western'){
-                                arr2.push(nbateam);
-                                arr2.sort((a,b) => {return a.conferenceRank.rank - b.conferenceRank.rank} )
-                                }
-                            })} */}
                             <h4 style={{color:"ghostwhite", marginBottom:"1em", textAlign:"center", background:"red", padding:"15px"}}>Western Conference</h4>
                             {this.props.west.map((teams, i) => {
                                 if(i === this.props.west.length - 1){
@@ -106,7 +99,6 @@ class HomePage extends Component {
                                                 <div style={{color: teams.team.teamColoursHex[1]}} className="card-body">
                                                 <span style={{background: "black", color: "ghostwhite", marginRight:"1em"}} className="badge">{teams.conferenceRank.rank}</span>
                                                 <img style={{borderRadius:"30px", height:"50px", width:"auto", marginRight:"1em"}} src={teams.team.officialLogoImageSrc} />                                               
-                                                    {/* {teams.team.name}  */}
                                                 </div>
                                             </div>
                                         </div>
@@ -119,7 +111,6 @@ class HomePage extends Component {
                                                 <div style={{color: teams.team.teamColoursHex[1]}} className="card-body">
                                                 <span style={{background: "black", color: "ghostwhite", marginRight:"1em"}} className="badge">{teams.conferenceRank.rank}</span>
                                                 <img style={{borderRadius:"30px", height:"50px", width:"auto", marginRight:"1em"}} src={teams.team.officialLogoImageSrc} />                                               
-                                                    {/* {teams.team.name}  */}
                                                 </div>
                                             </div>
                                         </div>
@@ -138,7 +129,8 @@ class HomePage extends Component {
         } else {
             return(
                 <div style={container} className="container-fluid">
-                    <div className="row">
+                    <Loader />
+                    {/* <div className="row">
                     <div className="col-5">
                         <h2>Loading</h2>
                         </div>
@@ -146,7 +138,7 @@ class HomePage extends Component {
                             <h2>Loading</h2>
                         </div>
     
-                    </div>
+                    </div> */}
                 </div>
             )
         }
@@ -154,7 +146,7 @@ class HomePage extends Component {
 }
 
 const container = {
-    
+    textAlign:"center",
 }
 const statLeaders = {
     padding: "1.3em",

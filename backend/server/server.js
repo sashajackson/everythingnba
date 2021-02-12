@@ -13,7 +13,7 @@ const btoa = require('btoa');
 const key = require('./data/keys');
 const package = btoa(key.token + ':' + key.pwd)
 const endPoints = require('./data/endpoints');
-const whiteList = ['http://localhost:3000', 'https://everythingnba.herokuapp.com'];
+const whiteList = ['http://localhost:3000', 'http://localhost:3001', 'https://everythingnba.herokuapp.com'];
 const corsOptions = {
     origin: whiteList,
     credentials: true,

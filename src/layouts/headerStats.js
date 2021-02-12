@@ -35,7 +35,7 @@ class HeaderStats extends Component {
                 teams: this.props.teams,
             })
             
-            console.log('headerStat component updated');
+            // console.log('headerStat component updated');
         }
     }
 
@@ -44,10 +44,10 @@ class HeaderStats extends Component {
     }
 
     componentDidUpdate = () => {
-        console.log('headerStats component updated');
+        // console.log('headerStats component updated');
         this._didUpdate = true;
-        console.log(this._time);
-        console.log(this.state.teams);
+        // console.log(this._time);
+        // console.log(this.state.teams);
         // this.recursiveSlideshow();
     }
 
@@ -119,34 +119,24 @@ class HeaderStats extends Component {
                                     </div>
                                     </div>
 
-                                    <div className="col-3 d-flex align-items-center">
+                                    <div className="col-4 ">
                                         <div className="" style={{color:"ghostwhite"}}>
-                                        <span>
+                                        <div className="alert" style={{borderRadius:"0", background:"black", color:"white", marginBottom:"0", textAlign:"center"}}>
                                             {this.getTeamInfo(game.schedule.homeTeam.id, game.schedule.awayTeam.id)[0].team.name} <i style={{color:"gold"}} class="fas fa-dice"></i>
-                                        </span>
+                                        </div>
                                         
                                         </div>
                                     </div>
                                             
                                     
-                                    <div className="col-5 d-flex align-items-center" style={{}}>
-                                    <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
-                                        <div class="carousel-inner">
-                                            <div class="carousel-item active">
-                                            <div style={{color:"ghostwhite"}} class="">
+                                    <div className="col-4 " style={{}}>
+                                            <div style={{borderRadius:"0", background:"black", color:"lime", marginBottom:"0", textAlign:"center"}} className="alert">
                                                 is ranked #{this.getTeamInfo(game.schedule.homeTeam.id, game.schedule.awayTeam.id)[0].overallRank.rank} overall
                                             </div>
-                                            
-                                            </div>
-                                            <div class="carousel-item">
-                                            <div style={{color:"ghostwhite"}} class="">
-                                                Lamelo Ball is on fire!
-                                            </div>
-                                            
-                                            </div>
-                                        </div>
-                                        </div>
+
                                     </div>
+
+                                    
                                 </div>
                                             
 

@@ -33,7 +33,7 @@ componentWillUnmount = () => {
     }
 
 componentDidUpdate = () => {
-        console.log('component updated');
+        // console.log('component updated');
 }
 
 getPPGLeaders = () => {
@@ -59,26 +59,6 @@ getPPGLeaders = () => {
                 this.wPPG.push(arr[i]);
             }
         }
-        // let astE = this.ePPG;
-        // let astW = this.wPPG;
-        // let rebE = this.ePPG;
-        // let rebW = this.wPPG;
-        // this.ale = astE.sort((a,b) => {
-        //     return a.stats.offense.astPerGame - b.stats.offense.astPerGame
-        // })
-        // this.alw = astW.sort((a,b) => {
-        //     return a.stats.offense.astPerGame - b.stats.offense.astPerGame
-        // })
-        // let rbLeadersE = rebE.sort((a,b) => {
-        //     return a.stats.offense.rebPerGame - b.stats.offense.rebPerGame
-        // })
-        // let rbLeadersW = rebW.sort((a,b) => {
-        //     return a.stats.rebounds.rebPerGame - b.stats.rebounds.rebPerGame
-        // })
-        // console.log(astLeadersE[astLeadersE.length-1])
-        // console.log(astLeadersW[astLeadersW.length-1])
-        // console.log(this.ePPG);
-        // console.log(this.wPPG);
         this.getAstLeaders();
     }
 
@@ -93,9 +73,6 @@ getAstLeaders = () => {
             this.astW.push(arr[i]);
         }
     }
-
-    // console.log(this.astE[0]);
-    // console.log(this.astW[1]);
 
     this.getRebLeaders();
 
@@ -117,7 +94,6 @@ getRebLeaders = () => {
 render(){
 
         if(this.state.loaded && this._isMounted){
-            console.log('everything is loaded')
             return (
                 <div>
                 <div className="row">

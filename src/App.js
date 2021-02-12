@@ -3,6 +3,7 @@ import React, {Component} from 'react'
 //components
 import HomePage from './layouts/homepage'
 import HeaderStats from './layouts/headerStats'
+import Loader from './layouts/loader'
 //tools
 import {Route, Router} from 'react-router-dom'
 import history from '../src/services/history'
@@ -28,34 +29,32 @@ componentDidMount = () => {
       
         //call to get teams from server
         axios.get('http://localhost:8080/getTeams').then(result => {
-          console.log(result);
             this.setState({
                 teams: result.data.teams,
                 playerStats: this.state.playerStats,
                 games: this.state.games,
             })
-
-        //call to get todays games
-        axios.get('http://localhost:8080/getGames').then(result => {
-          console.log('this is game ', result)
-            this.setState({
-              teams: this.state.teams,
-              playerStats: this.state.playerStats,
-              games: result.data.games,
-            })
-        })
-
-        //take all teams in east and push into array
-        this.splitTeams('Eastern');
-        this.splitTeams('Western');
-        this._nbaTeamsSorted.sort((a,b) => {return a.conferenceRank.rank - b.conferenceRank.rank})});
+                          //take all teams in east and push into array
+                          this.splitTeams('Eastern');
+                          this.splitTeams('Western');
+                          // this._nbaTeamsSorted.sort((a,b) => {
+                          //   return a.conferenceRank.rank - b.conferenceRank.rank
+                          // });
+          })
+          //call to get todays games
+          axios.get('http://localhost:8080/getGames').then(result => {
+              this.setState({
+                teams: this.state.teams,
+                playerStats: this.state.playerStats,
+                games: result.data.games,
+              })
+          })
         // this.getData();
     }
 }
 
 componentDidUpdate = () => {
-    console.log('component updated');
-    console.log(this.state.games);
+    // console.log('component updated');
 }
 
 componentWillUnmount = () => {
@@ -72,6 +71,7 @@ splitTeams = (conference) => {
   this.state.teams.map((nbateam, i) => {
     if(conference === 'Eastern'){
       if(nbateam.conferenceRank.rank <= 8 && nbateam.conferenceRank.conferenceName === 'Eastern'){
+        // console.log(nbateam);
           this._east.push(nbateam);
         }
     } else if(conference === 'Western'){
@@ -80,6 +80,17 @@ splitTeams = (conference) => {
       }
     }
     })
+
+
+    console.log(this._east)
+    console.log(this._west)
+    this._east.sort((a,b) => {
+      return a.conferenceRank.rank - b.conferenceRank.rank
+    })
+    this._west.sort((a,b) => {
+      return a.conferenceRank.rank - b.conferenceRank.rank
+    })
+
 }
 
   render(){
@@ -97,8 +108,8 @@ splitTeams = (conference) => {
       );
     } else {
       return (
-        // <Loader />
-        <h1>Loading</h1>
+        <Loader />
+        // <h1>Loading</h1>
       )
     }
   }
