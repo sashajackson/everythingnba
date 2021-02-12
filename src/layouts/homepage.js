@@ -130,15 +130,6 @@ class HomePage extends Component {
             return(
                 <div style={container} className="container-fluid">
                     <Loader />
-                    {/* <div className="row">
-                    <div className="col-5">
-                        <h2>Loading</h2>
-                        </div>
-                        <div className="col-7">
-                            <h2>Loading</h2>
-                        </div>
-    
-                    </div> */}
                 </div>
             )
         }

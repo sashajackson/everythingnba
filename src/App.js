@@ -37,9 +37,6 @@ componentDidMount = () => {
                           //take all teams in east and push into array
                           this.splitTeams('Eastern');
                           this.splitTeams('Western');
-                          // this._nbaTeamsSorted.sort((a,b) => {
-                          //   return a.conferenceRank.rank - b.conferenceRank.rank
-                          // });
           })
           //call to get todays games
           axios.get('http://localhost:8080/getGames').then(result => {
@@ -49,7 +46,6 @@ componentDidMount = () => {
                 games: result.data.games,
               })
           })
-        // this.getData();
     }
 }
 
@@ -71,7 +67,6 @@ splitTeams = (conference) => {
   this.state.teams.map((nbateam, i) => {
     if(conference === 'Eastern'){
       if(nbateam.conferenceRank.rank <= 8 && nbateam.conferenceRank.conferenceName === 'Eastern'){
-        // console.log(nbateam);
           this._east.push(nbateam);
         }
     } else if(conference === 'Western'){
@@ -80,10 +75,6 @@ splitTeams = (conference) => {
       }
     }
     })
-
-
-    console.log(this._east)
-    console.log(this._west)
     this._east.sort((a,b) => {
       return a.conferenceRank.rank - b.conferenceRank.rank
     })

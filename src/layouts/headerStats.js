@@ -29,13 +29,10 @@ class HeaderStats extends Component {
     componentDidMount = () => {
         this._isMounted = true;
         if(this._isMounted){
-            // console.log(this.props.games);
             this.setState({
                 games: this.props.games,
                 teams: this.props.teams,
             })
-            
-            // console.log('headerStat component updated');
         }
     }
 
@@ -44,11 +41,7 @@ class HeaderStats extends Component {
     }
 
     componentDidUpdate = () => {
-        // console.log('headerStats component updated');
         this._didUpdate = true;
-        // console.log(this._time);
-        // console.log(this.state.teams);
-        // this.recursiveSlideshow();
     }
 
     recursiveSlideshow = (index = 0) => {
@@ -64,7 +57,6 @@ class HeaderStats extends Component {
 
         let item = document.createElement('div');
         item.className = 'carousel-item';
-        // carousel.append(item);
         carousel.innerHTML = this.props.games[index].schedule.homeTeam.abbreviation;
         setTimeout(function(){
             that.recursiveSlideshow(++index);           
@@ -74,7 +66,6 @@ class HeaderStats extends Component {
 
     rs = (teamId) => {
         let team = this.getTeamId(teamId);
-        // console.log(team);
         return team[0].team.officialLogoImageSrc;
     }
 
@@ -82,7 +73,6 @@ class HeaderStats extends Component {
         let team = this.state.teams.filter(identify => {
             return identify.team.id === id;
         })
-        // console.log(team);
         return team;
     }
 
@@ -122,7 +112,7 @@ class HeaderStats extends Component {
                                     <div className="col-4 ">
                                         <div className="" style={{color:"ghostwhite"}}>
                                         <div className="alert" style={{borderRadius:"0", background:"black", color:"white", marginBottom:"0", textAlign:"center"}}>
-                                            {this.getTeamInfo(game.schedule.homeTeam.id, game.schedule.awayTeam.id)[0].team.name} <i style={{color:"gold"}} class="fas fa-dice"></i>
+                                            {this.getTeamInfo(game.schedule.homeTeam.id, game.schedule.awayTeam.id)[0].team.name} <i style={{color:"gold"}} className="fas fa-dice"></i>
                                         </div>
                                         
                                         </div>
@@ -149,12 +139,10 @@ class HeaderStats extends Component {
                                     <div style={{paddingRight:"0"}} className="col-6">
                                         <div style={colStyle}>
                                             <img src={this.rs(game.schedule.awayTeam.id)} style={gameStyle} />                                         
-                                            {/* <img src={this.rs(game.schedule.homeTeam.id)} style={gameStyle1} />   */}
                                         </div>
                                     </div>
                                     <div style={{paddingLeft:"0"}} className="col-6">
                                         <div style={colStyle1}>
-                                            {/* <img src={this.rs(game.schedule.awayTeam.id)} style={gameStyle} />                                          */}
                                             <img src={this.rs(game.schedule.homeTeam.id)} style={gameStyle1} />  
                                         </div>
                                     </div>
