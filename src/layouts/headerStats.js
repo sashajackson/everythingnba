@@ -98,7 +98,6 @@ class HeaderStats extends Component {
                 <div id="carousel" className="row">
                     <Slider {...this.settings}>
                         {this.state.games.map((game, index) => {
-                            console.log(game);
                             return (
                                 
                                 <div key={index} className="col-12">
