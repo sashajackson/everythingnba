@@ -28,7 +28,7 @@ componentDidMount = () => {
     if(this._isMounted){
       
         //call to get teams from server
-        axios.get('http://everythingnba.herokuapp.com/getTeams').then(result => {
+        axios.get('https://everythingnba.herokuapp.com/getTeams').then(result => {
             this.setState({
                 teams: result.data.teams,
                 playerStats: this.state.playerStats,
@@ -39,7 +39,7 @@ componentDidMount = () => {
                           this.splitTeams('Western');
           })
           //call to get todays games
-          axios.get('http://everythingnba.herokuapp.com/getGames').then(result => {
+          axios.get('https://everythingnba.herokuapp.com/getGames').then(result => {
               this.setState({
                 teams: this.state.teams,
                 playerStats: this.state.playerStats,
