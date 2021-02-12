@@ -98,6 +98,7 @@ class HeaderStats extends Component {
                 <div id="carousel" className="row">
                     <Slider {...this.settings}>
                         {this.state.games.map((game, index) => {
+                            console.log(game);
                             return (
                                 
                                 <div key={index} className="col-12">
@@ -105,7 +106,7 @@ class HeaderStats extends Component {
 
                                     <div className="col-4">
                                     <div className="alert" style={{borderRadius:"0", background:"black", color:"gold", marginBottom:"0", textAlign:"center"}}>
-                                        {moment(game.schedule.startTime).format("h:mm")} PM
+                                        {moment(game.schedule.startTime).format("h")}pm {moment(game.schedule.startTime).format('dddd')}
                                     </div>
                                     </div>
 
