@@ -3,7 +3,7 @@ const express = require('express');
 const app = express();
 //paths
 const path = require('path');
-const publicPath = path.join(__dirname, '..','..','build');
+const publicPath = path.join(__dirname, '..', '..','build');
 const port = process.env.PORT || 8080;
 //tools
 const axios = require('axios');
@@ -28,9 +28,9 @@ app.listen(port, () => {
 })
 
 //main route
-// app.get('*', (req, res) => {
-//     res.sendFile(path.join(publicPath, 'index.html'));
-// })
+app.get('/', (req, res) => {
+    res.sendFile(path.join(publicPath, 'index.html'));
+})
 
 //actionable routes
 app.get('/getTeams', (req, res) => {
